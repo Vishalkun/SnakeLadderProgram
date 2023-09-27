@@ -10,71 +10,20 @@ namespace SnakeAndLadderPrograms
     {
         public void start()
         {
-            int position;
-            int player_one = 3;
-
+            int position = 0;
+            int player_one;
+            player_one = position;
             Console.WriteLine("player one position is {0}", player_one);
-
-            while (player_one <= 100)
-            {
-                position = roll_die();
-                if (position == 0)
-                {
-                    Console.WriteLine("no play");
-                    player_one += position;
-
-                }
-                if (player_one == 0 && position < 0)
-                {
-                    Console.WriteLine("this is snake bite @ 0");
-                    player_one = 0;
-                }
-                if (player_one > 0 && position < 0)
-                {
-                    Console.WriteLine("this is a sanke bite");
-                    player_one += position;
-                    if (player_one < 0)
-                    {
-                        player_one = 0;
-                    }
-                }
-                if (position > 0)
-                {
-                    Console.WriteLine("its a ladder");
-                    player_one += position;
-                }
-                Console.WriteLine("player one rolls the die and get the position {0}", player_one);
-            }
+            player_one = roll_die();
+            Console.WriteLine("player one rolled the dice and got the position {0}", player_one);
         }
-
-        readonly Random random = new Random();
 
         public int roll_die()
         {
-            int dice, check;
-            dice = random.Next(1, 7);
-            Console.WriteLine("dice={0} ", dice);
-            check = check_play();
+            Random random = new Random();
+            int dice = random.Next(1, 7);
+            return dice;
 
-            if (check == 1)
-            {
-                return -dice;
-            }
-            if (check == 2)
-            {
-                return dice;
-            }
-            else
-            {
-                return 0;
-            }
-
-        }
-
-        public int check_play()
-        {
-            int check = random.Next(1, 4);
-            return check;
         }
         public void Board()
         {
